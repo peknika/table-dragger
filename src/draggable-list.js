@@ -39,7 +39,6 @@ export default class Dragger {
       return previous.appendChild(li) && previous;
     }, document.createElement('ul'));
 
-    debugger;
     console.log('dragula', this.options.slideFactorX)
 
     this.drake = dragula([this.el], {
@@ -54,6 +53,7 @@ export default class Dragger {
       .on('out', this.onOut);
 
     this.renderEl();
+    debugger;
     this.dispatchMousedown();
   }
 
