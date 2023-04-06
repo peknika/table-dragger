@@ -2560,6 +2560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return previous.appendChild(li) && previous;
 	    }, document.createElement('ul'));
 	
+	    debugger;
 	    console.log('dragula', this.options.slideFactorX);
 	
 	    this.drake = (0, _dragulaWithAnimation2.default)([this.el], {
