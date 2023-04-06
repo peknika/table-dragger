@@ -39,9 +39,13 @@ export default class Dragger {
       return previous.appendChild(li) && previous;
     }, document.createElement('ul'));
 
+
+    console.log('dragula', this.options.slideFactorX)
+
     this.drake = dragula([this.el], {
       animation: 300,
       staticClass: classes.static,
+      slideFactorX: this.options.slideFactorX,
       direction: mode === 'column' ? 'horizontal' : 'vertical',
     })
       .on('drag', this.onDrag)
@@ -54,17 +58,19 @@ export default class Dragger {
   }
 
   onDrag () {
+    console.log('onDrag onDrag', new Date().toLocaleTimeString());
+    this.dragger.emit('drag', this.originTable.el, this.options.mode);
     css(document.body, { overflow: 'hidden' });
     const barWidth = getScrollBarWidth();
-    console.log(barWidth,'barWidth');
+
     if (barWidth) {
       css(document.body, { 'padding-right': `${barWidth + bodyPaddingRight}px` });
     }
     touchy(document, 'remove', 'mouseup', this.destroy);
-    this.dragger.emit('drag', this.originTable.el, this.options.mode);
   }
 
   onDragend (droppedItem) {
+    document.body.style.cursor = 'default'
     const { originTable: { el: originEl }, dragger, index, mode, el } = this;
     css(document.body, { overflow: bodyOverflow, 'padding-right': `${bodyPaddingRight}px` });
     this.dragger.dragging = false;
@@ -78,6 +84,7 @@ export default class Dragger {
     const { originTable: { el: originEl }, dragger, index, el, mode } = this;
     const from = index;
     const to = Array.from(el.children).indexOf(draggingItem);
+    console.log('draggingItem', draggingItem)
     dragger.emit('shadowMove', from, to, originEl, mode);
   }
 

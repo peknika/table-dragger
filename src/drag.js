@@ -7,6 +7,7 @@ import { touchy, sort } from './util';
 
 export default class Drag {
   constructor (table = null, userOptions = {}) {
+    console.log('userOptions', userOptions)
     if (!checkIsTable(table)) {
       throw new TypeError(`table-dragger: el must be TABLE HTMLElement, not ${{}.toString.call(table)}`);
     }
@@ -18,8 +19,10 @@ export default class Drag {
       dragHandler: '',
       onlyBody: false,
       animation: 300,
+      filter: '',
+      slideFactorX: 0,
     };
-    const options = this.options = Object.assign({}, defaults, userOptions);
+    const options = this.options = {...defaults, ...userOptions};
     const { mode } = options;
     if (mode === 'free' && !options.dragHandler) {
       throw new Error('table-dragger: please specify dragHandler in free mode');
@@ -68,10 +71,16 @@ export default class Drag {
   }
 
   onTap (event) {
+    console.log('onTap', event, new Date().toLocaleTimeString());
     let { target } = event;
 
     while (target.nodeName !== 'TD' && target.nodeName !== 'TH') {
       target = target.parentElement;
+    }
+
+    const filter = target.classList.contains(this.options.filter)
+    if (filter) {
+      return;
     }
 
     const ignore = !isLeftButton(event) || event.metaKey || event.ctrlKey;

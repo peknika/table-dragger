@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-.sindu_handle {
-  cursor: move;
-}
-
 .sindu_dragger li {
   margin: 0;
   padding: 0;
@@ -34,22 +30,10 @@
 }
 
 .gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  opacity: 0.8;
+  display: none !important;
 }
 
-.gu-mirror li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-align: inherit;
-}
 
-.gu-mirror li table, .gu-mirror tr, .gu-mirror th, .gu-mirror td {
-  box-sizing: border-box;
-}
 
 .gu-hide {
   display: none !important;
@@ -64,4 +48,5 @@
 
 .gu-transit {
   opacity: 0.5;
+  background-color: yellow !important;
 }
