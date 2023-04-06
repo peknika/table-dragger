@@ -603,7 +603,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var gapX = Math.abs(event.clientX - tappedCoord.x);
 	      var gapY = Math.abs(event.clientY - tappedCoord.y);
 	
-	      console.log('startBecauseMouseMoved', gapX, gapY, new Date().toLocaleTimeString());
+	      var isFree = mode === 'free';
+	      var realMode = mode;
 	
 	      if (!gapX && !gapY) {
 	        return;
