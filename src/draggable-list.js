@@ -44,7 +44,10 @@ export default class Dragger {
     this.drake = dragula([this.el], {
       animation: 300,
       staticClass: classes.static,
-      slideFactorX: this.options.slideFactorX,
+      accepts: (el, target, source, sibling) => { 
+        console.log('ACCEPTS', {el, target, source, sibling}) 
+        return false
+      },
       direction: mode === 'column' ? 'horizontal' : 'vertical',
     })
       .on('drag', this.onDrag)
@@ -53,7 +56,6 @@ export default class Dragger {
       .on('out', this.onOut);
 
     this.renderEl();
-    debugger;
     this.dispatchMousedown();
   }
 

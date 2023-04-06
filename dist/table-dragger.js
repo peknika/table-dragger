@@ -2565,12 +2565,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.drake = (0, _dragulaWithAnimation2.default)([this.el], {
 	      animation: 300,
 	      staticClass: _classes2.default.static,
-	      slideFactorX: this.options.slideFactorX,
+	      accepts: function accepts(el, target, source, sibling) {
+	        console.log('ACCEPTS', { el: el, target: target, source: source, sibling: sibling });
+	        return false;
+	      },
 	      direction: mode === 'column' ? 'horizontal' : 'vertical'
 	    }).on('drag', this.onDrag).on('dragend', this.onDragend).on('shadow', this.onShadow).on('out', this.onOut);
 	
 	    this.renderEl();
-	    debugger;
 	    this.dispatchMousedown();
 	  }
 	
