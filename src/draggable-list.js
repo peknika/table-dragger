@@ -46,10 +46,12 @@ export default class Dragger {
       staticClass: classes.static,
       direction: mode === 'column' ? 'horizontal' : 'vertical',
     })
-      .on('drag', this.onDrag)
+      .on('drag', () => {
+        this.onDrag
+        this.onShadow;
+      })
       .on('dragend', () => { 
         this.onDragend;
-        this.onShadow;
        } )
       .on('out', this.onOut);
 

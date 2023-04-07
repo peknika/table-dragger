@@ -2566,9 +2566,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      animation: 300,
 	      staticClass: _classes2.default.static,
 	      direction: mode === 'column' ? 'horizontal' : 'vertical'
-	    }).on('drag', this.onDrag).on('dragend', function () {
-	      _this.onDragend;
+	    }).on('drag', function () {
+	      _this.onDrag;
 	      _this.onShadow;
+	    }).on('dragend', function () {
+	      _this.onDragend;
 	    }).on('out', this.onOut);
 	
 	    this.renderEl();
