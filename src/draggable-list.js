@@ -44,15 +44,13 @@ export default class Dragger {
     this.drake = dragula([this.el], {
       animation: 300,
       staticClass: classes.static,
-      accepts: (el, target, source, sibling) => { 
-        console.log('ACCEPTS', {el, target, source, sibling}) 
-        return false
-      },
       direction: mode === 'column' ? 'horizontal' : 'vertical',
     })
       .on('drag', this.onDrag)
-      .on('dragend', this.onDragend)
-      .on('shadow', this.onShadow)
+      .on('dragend', () => { 
+        this.onDragend;
+        this.onShadow;
+       } )
       .on('out', this.onOut);
 
     this.renderEl();
