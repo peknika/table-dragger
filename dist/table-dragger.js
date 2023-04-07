@@ -3188,6 +3188,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var dropTarget = findDropTarget(elementBehindCursor, clientX, clientY);
 	    var changed = dropTarget !== null && dropTarget !== _lastDropTarget;
 	    if (changed || dropTarget === null) {
+	      debugger;
 	      out();
 	      _lastDropTarget = dropTarget;
 	      over();
